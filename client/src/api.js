@@ -43,7 +43,7 @@ export async function postidea(
   const token = await getAccessTokenSilently({
     audience: process.env.REACT_APP_AUTH0_AUDIENCE,
   });
-  return request(`/restaurants`, {
+  return request(`/restaurants/toukou`, {
     body: JSON.stringify(record),
     headers: {
       Authorization: `Bearer ${token}`,

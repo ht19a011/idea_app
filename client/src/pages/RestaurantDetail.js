@@ -127,8 +127,10 @@ export function RestaurantDetailPage() {
   const [reviews, setReviews] = useState(null);
 
   const { getAccessTokenWithPopup } = useAuth0();
+  //ログインのいらない投稿
   const { getAccessTokenSilently } = useAuth0();
 
+  //取得したID
   const params = useParams();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -160,7 +162,7 @@ export function RestaurantDetailPage() {
       limit: perPage,
       offset: (page - 1) * perPage,
     });
-    setReviews(data);
+    setReviews(data);//レビューの表示
   }
 
 

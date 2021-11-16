@@ -103,6 +103,16 @@ app.post("/restaurants/:restaurantId/reviews", checkJwt, async (req, res) => {
   res.json(review);
 });
 
+//投稿
+app.post("/restaurants/toukou", checkJwt, async (req, res) => {
+
+  const record = {
+    name: req.body.title,
+  };
+  const restaurants = await Restaurant.create(record);
+  res.json(restaurants);
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);

@@ -18,7 +18,7 @@ function Form({ onSubmit }) {
     if (onSubmit) {
       const record = {
         title: event.target.elements.title.value,
-        comment: event.target.elements.comment.value,
+        //comment: event.target.elements.comment.value,
       };
       event.target.elements.title.value = "";
       event.target.elements.comment.value = "";
@@ -72,43 +72,23 @@ function Form({ onSubmit }) {
 
 
 export function PostPage() {
-  const [restaurant, setRestaurant] = useState(null);
-  const [reviews, setReviews] = useState(null);
+
 
   const { getAccessTokenSilently } = useAuth0();
 
-  const params = useParams();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const perPage = 5;
-  const page = +query.get("page") || 1;
 
-  useEffect(() => {
-    getRestaurant(params.restaurantId).then((data) => {
-      setRestaurant(data);
-    });
-  }, [params.restaurantId]);
 
-  useEffect(() => {
-    getRestaurantReviews(params.restaurantId, {
-      limit: perPage,
-      offset: (page - 1) * perPage,
-    }).then((data) => {
-      setReviews(data);
-    });
-  }, [params.restaurantId, page]);
+ 
+
+
+
 
   async function handleFormSubmit(record) {
-    await postRestaurantReview(
-      params.restaurantId,
+    alert("aaaa")
+    await postidea(
       record,
       getAccessTokenSilently
     );
-    const data = await getRestaurantReviews(params.restaurantId, {
-      limit: perPage,
-      offset: (page - 1) * perPage,
-    });
-    setReviews(data);
   }
 
 
